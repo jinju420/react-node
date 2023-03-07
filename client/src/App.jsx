@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import Header from './common/Header';
-import Create from './community/Create';
 import Main from './common/Main';
+import Create from './community/Create';
 import List from './community/List';
 
 function App() {
@@ -11,8 +11,8 @@ function App() {
 
 			<Routes>
 				<Route path='/' element={<Main />} />
-				<Route path='/' element={<List />} />
-				<Route path='/' element={<Create />} />
+				<Route path='/list' element={<List />} />
+				<Route path='/create' element={<Create />} />
 			</Routes>
 		</>
 	);
