@@ -10,7 +10,6 @@ router.post('/create', (req, res) => {
 	Counter.findOne({ name: 'counter' })
 		.exec()
 		.then((doc) => {
-			console.log(doc);
 			const PostModel = new Post({
 				title: req.body.title,
 				content: req.body.content,
@@ -63,7 +62,6 @@ router.post('/edit', (req, res) => {
 	Post.updateOne({ communityNum: req.body.num }, { $set: temp })
 		.exec()
 		.then((doc) => {
-			console.log(doc);
 			res.json({ success: true });
 		})
 		.catch((err) => res.json({ success: false }));
