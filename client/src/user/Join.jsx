@@ -1,6 +1,7 @@
 import Layout from '../common/Layout';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import firebase from '../firebase';
 import styled from 'styled-components';
 
@@ -11,6 +12,7 @@ const BtnSet = styled.div`
 `;
 
 function Join() {
+	const user = useSelector((store) => store.user);
 	const navigate = useNavigate();
 	const [Email, setEmail] = useState('');
 	const [Pwd1, setPwd1] = useState('');
@@ -37,6 +39,10 @@ function Join() {
 		console.log(createdUser.user);
 		navigate('/login');
 	};
+
+	useEffect(() => {
+		if (user.uid !== '') navigate('/');
+	}, [navigate, user]);
 
 	return (
 		<Layout name={'Join'}>
