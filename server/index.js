@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const app = express();
 const port = 5500;
 
+//오류 해결안됨
 //클라이언트에서 보내는 데이터를 전달받도록 설정 (body-parser)
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
