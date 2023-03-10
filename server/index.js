@@ -11,8 +11,9 @@ app.use(express.urlencoded({ extended: true }));
 //express에서 client안쪽 build폴더까지의 경로를 static으로 지정
 app.use(express.static(path.join(__dirname, '../client/build')));
 
-//community전용 라우터 연결/해당 기능을 가져오겠다
+//community,user전용 라우터 연결/해당 기능을 가져오겠다
 app.use('/api/community', require('./router/communityRouter.js'));
+app.use('/api/user', require('./router/userRouter.js'));
 
 //mongoDB 접속 구문
 app.listen(port, () => {
