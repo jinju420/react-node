@@ -1,7 +1,6 @@
 import Layout from '../common/Layout';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import firebase from '../firebase';
 import styled from 'styled-components';
 
@@ -11,8 +10,7 @@ const BtnSet = styled.div`
 	margin-top: 20px;
 `;
 
-function Login() {
-	const user = useSelector((store) => store.user);
+function Loign() {
 	const navigate = useNavigate();
 	const [Email, setEmail] = useState('');
 	const [Pwd, setPwd] = useState('');
@@ -31,24 +29,10 @@ function Login() {
 		}
 	};
 
-	useEffect(() => {
-		if (user.uid !== '') navigate('/');
-	}, [navigate, user]);
-
 	return (
 		<Layout name={'Login'}>
-			<input
-				type='email'
-				value={Email}
-				placeholder='이메일 주소를 입력하세요.'
-				onChange={(e) => setEmail(e.target.value)}
-			/>
-			<input
-				type='password'
-				value={Pwd}
-				placeholder='비밀번호를 입력하세요.'
-				onChange={(e) => setPwd(e.target.value)}
-			/>
+			<input type='email' value={Email} placeholder='이메일 주소를 입력하세요.' onChange={(e) => setEmail(e.target.value)} />
+			<input type='password' value={Pwd} placeholder='비밀번호를 입력하세요.' onChange={(e) => setPwd(e.target.value)} />
 
 			<BtnSet>
 				<button onClick={handleLogin}>로그인</button>
@@ -59,4 +43,4 @@ function Login() {
 	);
 }
 
-export default Login;
+export default Loign;
