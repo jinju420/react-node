@@ -10,7 +10,7 @@ const BtnSet = styled.div`
 	margin-top: 20px;
 `;
 
-function Loign() {
+function Login() {
 	const navigate = useNavigate();
 	const [Email, setEmail] = useState('');
 	const [Pwd, setPwd] = useState('');
@@ -43,4 +43,4 @@ function Loign() {
 	);
 }
 
-export default Loign;
+export default Login;

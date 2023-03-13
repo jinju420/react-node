@@ -5,6 +5,7 @@ const { Counter } = require('../model/counterSchema.js');
 
 router.post('/join', (req, res) => {
 	const temp = req.body;
+	console.log(temp);
 
 	Counter.findOne({ name: 'counter' })
 		.then((doc) => {
@@ -12,9 +13,7 @@ router.post('/join', (req, res) => {
 
 			const userData = new User(temp);
 			userData.save().then(() => {
-				Counter.updateOne({ name: 'counter' }, { $inc: { userNum: 1 } }).then(() =>
-					res.json({ success: true })
-				);
+				Counter.updateOne({ name: 'counter' }, { $inc: { userNum: 1 } }).then(() => res.json({ success: true }));
 			});
 		})
 		.catch((err) => res.json({ success: false, err: err }));

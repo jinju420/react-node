@@ -27,7 +27,7 @@ function Edit() {
 		};
 
 		axios
-			.post('/api/community/edit', item)
+			.put('/api/community/edit', item)
 			.then((res) => {
 				if (res.data.success) {
 					alert('글 수정이 완료되었습니다.');
@@ -41,12 +41,13 @@ function Edit() {
 
 	//순서1 - 처음 컴포넌트 마운트시 서버쪽에 데이터 요청후 응답값을 Detail에 옮겨담음
 	useEffect(() => {
-		axios.post('/api/community/detail', params).then((res) => {
+		axios.get(`/api/community/detail/${params.num}`).then((res) => {
 			if (res.data.success) {
 				setDetail(res.data.detail);
 			}
 		});
 	}, [params]);
+
 	//순서2 - Detail에 값이 담아지면 Title, Content에 제목, 본문을 분리해서 저장
 	useEffect(() => {
 		setTitle(Detail.title);
@@ -58,12 +59,7 @@ function Edit() {
 		<>
 			<Layout name={'Edit'}>
 				<label htmlFor='tit'>Title</label>
-				<input
-					type='text'
-					id='tit'
-					value={Title || ''}
-					onChange={(e) => setTitle(e.target.value)}
-				/>
+				<input type='text' id='tit' value={Title || ''} onChange={(e) => setTitle(e.target.value)} />
 				<label htmlFor='con'>Content</label>
 				<textarea
 					name='cons'

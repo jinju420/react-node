@@ -25,15 +25,16 @@ function Detail() {
 	const [Detail, setDetail] = useState(null);
 
 	const handleDelete = () => {
-		if (!window.confirm('정말 삭제하시겠습니까?')) return;
+		if (!window.confirm('정말 삭제하겠습니까?')) return;
+
 		axios
-			.post('/api/community/delete', params)
+			.delete(`/api/community/delete/${params.num}`)
 			.then((res) => {
 				if (res.data.success) {
-					alert('게시글이 삭제되었습니다');
+					alert('게시글이 삭제되었습니다.');
 					navigate('/list');
 				} else {
-					alert('게시글 삭제에 실패했습니다');
+					alert('게시글 삭제에 실패했습니다.');
 				}
 			})
 			.catch((err) => console.log(err));
@@ -41,7 +42,7 @@ function Detail() {
 
 	useEffect(() => {
 		axios
-			.post('/api/community/detail', params)
+			.get(`/api/community/detail/${params.num}`)
 			.then((res) => {
 				if (res.data.success) {
 					setDetail(res.data.detail);
@@ -59,13 +60,21 @@ function Detail() {
 					<DetailWrap>
 						<h2>{Detail?.title}</h2>
 						<p>{Detail?.content}</p>
+						<span>작성자: {Detail?.writer.displayName}</span>
+						{Detail?.createdAt === Detail?.updatedAt ? (
+							<p>작성일: {Detail?.createdAt.split('T')[0]}</p>
+						) : (
+							<p>수정일: {Detail?.updatedAt.split('T')[0]}</p>
+						)}
 					</DetailWrap>
-					{user.uid !== '' && (
+
+					{/* 로그인된 사용자의 아이디와 글작성한 사용자의 아이디가 동일할 때에만 수정, 삭제버튼 출력 */}
+					{user.uid === Detail?.writer.uid && (
 						<BtnSet>
 							<button>
-								<Link to={`/edit/${params.num}`}>EDIT</Link>
+								<Link to={`/edit/${params.num}`}>Edit</Link>
 							</button>
-							<button onClick={handleDelete}>DELETE</button>
+							<button onClick={handleDelete}>Delete</button>
 						</BtnSet>
 					)}
 				</>

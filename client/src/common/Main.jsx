@@ -14,7 +14,6 @@ const Item = styled.article`
 
 function Main() {
 	const [List, setList] = useState([]);
-
 	useEffect(() => {
 		axios.get('/api/community/read/3').then((res) => {
 			if (res.data.success) setList(res.data.communityList);

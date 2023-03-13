@@ -19,9 +19,7 @@ app.use('/api/user', require('./router/userRouter.js'));
 //mongoDB 접속 구문
 app.listen(port, () => {
 	mongoose
-		.connect(
-			'mongodb+srv://ljjshlove420:!abcd1234@cluster0.7kgnszt.mongodb.net/?retryWrites=true&w=majority'
-		)
+		.connect('mongodb+srv://ljjshlove420:!abcd1234@cluster0.7kgnszt.mongodb.net/?retryWrites=true&w=majority')
 		.then(() => console.log(`Server app listening on port${port}`))
 		.catch((err) => console.log(err));
 });
@@ -30,7 +28,6 @@ app.listen(port, () => {
 app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
-
 app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
