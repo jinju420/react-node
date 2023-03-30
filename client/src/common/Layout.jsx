@@ -8,9 +8,10 @@ const MainWrap = styled.main`
 		width: 100%;
 		padding: 60px;
 		h1 {
-			font: bold 40px/1 'Montserrat';
+			font: bold 25px/1 'Montserrat';
 			color: #fff;
-			margin-bottom: 30px;
+			margin-bottom: 60px;
+			border-bottom: 1px solid #fff;
 		}
 		section {
 			label {

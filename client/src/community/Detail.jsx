@@ -38,6 +38,7 @@ const FlexP = styled.p`
 	justify-content: flex-end;
 	margin-top: 15px;
 	font-family: 'Montserrat';
+	color: #adadad;
 `;
 const Span = styled.span`
 	font-size: 14px;

@@ -16,8 +16,9 @@ const HeaderWrap = styled.header`
 const Logo = styled.h1`
 	margin-bottom: 40px;
 	a {
-		font: bold 50px/1 'Montserrat';
+		font: bold 100px/1 'Montserrat';
 		color: #fff;
+		letter-spacing: 5px;
 	}
 `;
 
@@ -69,7 +70,7 @@ function Header() {
 	return (
 		<HeaderWrap>
 			<Logo>
-				<Link to='/'>GRANHAND.</Link>
+				<Link to='/'>NOTICE</Link>
 			</Logo>
 
 			<DescP>

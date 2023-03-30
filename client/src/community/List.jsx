@@ -10,7 +10,7 @@ const Item = styled.article`
 	margin-right: 15px;
 	padding: 30px 40px;
 	background: #333;
-	color: #777;
+	color: #adadad;
 	margin-bottom: 50px;
 	box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.02);
 `;
