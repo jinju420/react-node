@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import firebase from '../firebase';
 
 const HeaderWrap = styled.header`
-	width: 350px;
+	width: 500px;
 	height: 100vh;
-	background: #222;
+	background: #000;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -16,7 +16,7 @@ const HeaderWrap = styled.header`
 const Logo = styled.h1`
 	margin-bottom: 40px;
 	a {
-		font: 35px/1 'arial';
+		font: bold 50px/1 'Montserrat';
 		color: #fff;
 	}
 `;
@@ -24,8 +24,8 @@ const Logo = styled.h1`
 const Gnb = styled.ul`
 	a {
 		display: block;
-		padding: 10px;
-		font: bold 16px/1 'arial';
+		padding: 20px 0 30px;
+		font: bold 16px/1 'Montserrat';
 		color: #bbb;
 	}
 `;
@@ -40,10 +40,27 @@ const Util = styled.ul`
 		color: #777;
 		cursor: pointer;
 		a {
-			font: 14px/1 'arial';
+			font: 14px/1 'Montserrat';
 			color: #555;
 		}
 	}
+`;
+const DescP = styled.p`
+	font-size: 30px;
+	margin-bottom: 300px;
+	color: #fff;
+	font-family: 'Montserrat';
+`;
+const List = styled.li`
+	font-size: 14px;
+	border-bottom: 1px solid #333;
+`;
+const Num = styled.span`
+	font-size: 25px;
+`;
+const Join = styled.li`
+	font-size: 16px;
+	font-family: 'Montserrat';
 `;
 function Header() {
 	const navigate = useNavigate();
@@ -55,40 +72,44 @@ function Header() {
 				<Link to='/'>GRANHAND.</Link>
 			</Logo>
 
+			<DescP>
+				Hello. <br />
+				This is Recent Newest
+			</DescP>
 			<Gnb>
-				<li>
+				<List>
 					<NavLink to='/list' style={({ isActive }) => (isActive ? activeStyle : null)}>
-						Show List
+						<Num>01</Num> SHOW LIST
 					</NavLink>
-				</li>
+				</List>
 				{/* 로그인 유무에 따라 글작성 메뉴 보임처리 */}
 				{user.uid !== '' && (
-					<li>
+					<List>
 						<NavLink to='/create' style={({ isActive }) => (isActive ? activeStyle : null)}>
-							Write Post
+							<Num>02</Num> WRITE POST
 						</NavLink>
-					</li>
+					</List>
 				)}
 			</Gnb>
 
 			{/* 로그인 유무에 따라 로그인 메뉴 및 인사메세지 분기처리 */}
 			{user.uid === '' ? (
 				<Util>
-					<li>
+					<Join>
 						<NavLink to='/login' style={({ isActive }) => (isActive ? activeStyle : null)}>
-							Login
+							LOGIN
 						</NavLink>
-					</li>
-					<li>
+					</Join>
+					<Join>
 						<NavLink to='/join' style={({ isActive }) => (isActive ? activeStyle : null)}>
-							Join
+							JOIN
 						</NavLink>
-					</li>
+					</Join>
 				</Util>
 			) : (
 				<Util>
-					<li>{`${user.displayName}님 반갑습니다.`}</li>
-					<li
+					<Join>{`${user.displayName}님 반갑습니다.`}</Join>
+					<Join
 						onClick={() => {
 							firebase.auth().signOut();
 							alert('로그아웃 되었습니다. 메인페이지로 이동합니다.');
@@ -96,7 +117,7 @@ function Header() {
 						}}
 					>
 						로그아웃
-					</li>
+					</Join>
 				</Util>
 			)}
 		</HeaderWrap>

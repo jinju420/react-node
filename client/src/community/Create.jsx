@@ -33,14 +33,16 @@ function Create() {
 	}, [navigate, user]);
 
 	return (
-		<Layout name={'Post'}>
-			<label htmlFor='tit'>Title</label>
-			<input type='text' id='tit' value={Tit} onChange={(e) => setTit(e.target.value)} />
-			<br />
-			<label htmlFor='con'>Content</label>
-			<textarea name='cons' id='id' cols='30' rows='3' value={Con} onChange={(e) => setCon(e.target.value)}></textarea>
-			<br />
-			<button onClick={handleCreate}>SEND</button>
+		<Layout name={'POST'}>
+			<div className='form'>
+				<label htmlFor='tit'>Title</label>
+				<input type='text' id='tit' value={Tit} onChange={(e) => setTit(e.target.value)} />
+				<br />
+				<label htmlFor='con'>Content</label>
+				<textarea name='cons' id='id' cols='30' rows='3' value={Con} onChange={(e) => setCon(e.target.value)}></textarea>
+				<br />
+				<button onClick={handleCreate}>SEND</button>
+			</div>
 		</Layout>
 	);
 }

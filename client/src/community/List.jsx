@@ -5,11 +5,23 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Item = styled.article`
-	width: 100%;
+	width: 31%;
+	float: left;
+	margin-right: 15px;
 	padding: 30px 40px;
-	background: #fff;
+	background: #333;
+	color: #777;
 	margin-bottom: 50px;
 	box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.02);
+`;
+const Title = styled.h2`
+	margin-bottom: 50px;
+	font-family: 'Montserrat';
+`;
+const Name = styled.span`
+	display: flex;
+	justify-content: flex-end;
+	font-family: 'Montserrat';
 `;
 
 function List() {
@@ -31,14 +43,14 @@ function List() {
 	}, []);
 
 	return (
-		<Layout name={'List'}>
+		<Layout name={'LIST'}>
 			{List.map((post) => {
 				return (
 					<Item key={post._id}>
-						<h2>
+						<Title>
 							<Link to={`/detail/${post.communityNum}`}>{post.title}</Link>
-						</h2>
-						<span>작성자: {post.writer.displayName}</span>
+						</Title>
+						<Name>작성자: {post.writer.displayName}</Name>
 					</Item>
 				);
 			})}
