@@ -48,7 +48,7 @@ const Util = styled.ul`
 `;
 const DescP = styled.p`
 	font-size: 30px;
-	margin-bottom: 300px;
+	margin-bottom: 100px;
 	color: #fff;
 	font-family: 'Montserrat';
 `;
